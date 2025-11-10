@@ -90,7 +90,7 @@ namespace BinaryTrees
             else if (RightChild != null)
             {
                 count += RightChild.Count();
-            }
+            } 
 
             return count;
         }
@@ -155,7 +155,8 @@ namespace BinaryTrees
             {
                 return Value;
             }
-            
+
+            return default;
         }
 
         
