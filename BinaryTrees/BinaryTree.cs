@@ -81,12 +81,19 @@ namespace BinaryTrees
             //          - Recursive call to AddBalanced with the elements on the left of center [start,center-1]. Add the result to the new node as LeftNode
             //          - Recursive call to AddBalanced with the elements on the right of center [center+1,end]. Add the result to the new node as RightNode
 
-            int center = (end - start) / 2;
-            BinaryTreeNode<TKey, TValue> tree = new BinaryTreeNode<TKey, TValue>(keys[center], values[center]);
-            tree.LeftChild = AddBalanced(keys, values, start, center - 1);
-            tree.RightChild = AddBalanced(keys, values, center + 1, end);
+            if (start > end)
+            {
+                return null;
+            }
+            else
+            {
+                int center = (end + start) / 2;
+                BinaryTreeNode<TKey, TValue> tree = new BinaryTreeNode<TKey, TValue>(keys[center], values[center]);
+                tree.LeftChild = AddBalanced(keys, values, start, center - 1);
+                tree.RightChild = AddBalanced(keys, values, center + 1, end);
 
-            return tree;
+                return tree;
+            }
             
         }
 
